@@ -10,11 +10,11 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.8
       - key: DATABASE_URL
-        sync: false
+        value: postgresql://neondb_owner:npg_SeNMd7iaIX3u@ep-dawn-shadow-ai4ljurk-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       - key: DEBUG
         value: "false"
       - key: SECRET_KEY
-        generateValue: true
+        value: 76c62bu6cnu(ga2%l93z+895^8lbr$v7wp9cd6ux&obm!&&o0q
       - key: ALLOWED_HOSTS
         value: .onrender.com
       - key: CORS_ALLOWED_ORIGINS

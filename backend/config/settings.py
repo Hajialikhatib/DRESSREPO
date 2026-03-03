@@ -5,12 +5,12 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY', default='change-me-in-production')
+SECRET_KEY = config('SECRET_KEY', default='76c62bu6cnu(ga2%l93z+895^8lbr$v7wp9cd6ux&obm!&&o0q')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
-    default='localhost,127.0.0.1',
+    default='.onrender.com,localhost,127.0.0.1',
     cast=Csv(),
 )
 
@@ -66,7 +66,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASE_URL = config('DATABASE_URL', default=config('NEON_DATABASE_URL', default=''))
+DATABASE_URL = config(
+    'DATABASE_URL',
+    default=config(
+        'NEON_DATABASE_URL',
+        default='postgresql://neondb_owner:npg_SeNMd7iaIX3u@ep-dawn-shadow-ai4ljurk-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+    ),
+)
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.parse(
@@ -136,7 +142,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     *config(
         'CORS_ALLOWED_ORIGINS',
-        default='http://localhost:3000,http://127.0.0.1:3000',
+        default='https://dressrepo.vercel.app,http://localhost:3000,http://127.0.0.1:3000',
         cast=Csv(),
     ),
 ]
@@ -144,7 +150,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='http://localhost:3000,http://127.0.0.1:3000',
+    default='https://dressrepo.vercel.app,https://chaudo-backend.onrender.com,http://localhost:3000,http://127.0.0.1:3000',
     cast=Csv(),
 )
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
