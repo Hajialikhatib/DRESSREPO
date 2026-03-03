@@ -66,7 +66,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASE_URL = config('DATABASE_URL', default='')
+DATABASE_URL = config('DATABASE_URL', default=config('NEON_DATABASE_URL', default=''))
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.parse(
